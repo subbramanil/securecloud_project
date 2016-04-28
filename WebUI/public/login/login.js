@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('login', ['ngRoute'])
+angular.module('login', ['ngRoute', 'data'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/login', {
             templateUrl: 'public/login/login.html',
@@ -23,22 +23,26 @@ angular.module('login', ['ngRoute'])
     .service('LoginService', [
         '$http',
         '$q',
-        function ($http, $q) {
+        'commonDataService',
+        function ($http, $q, commonDataService) {
 
             var Items = '';
             var Total = 0;
-
             return {
 
                 login: function (username, passwd) {
                     console.log("LoginService.login() entry");
                     var params = "?userName=" + username + "&password=" + passwd;
                     var defer = $q.defer();
+                    var userInfo = {
+                        userName: username
+                    };
+                    commonDataService.setUserInfo(userInfo);
                     $http(
                         {
                             method: "get",
                             url: "http://localhost:8080/demoREST/rest/authenticate" + params,
-                            headers: { 'Accept': 'application/json' }
+                            headers: {'Accept': 'application/json'}
                         }
                     ).then(function (response) {
                             console.log("Response: ", response);

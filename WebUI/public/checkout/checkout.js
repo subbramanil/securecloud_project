@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('checkout', ['ngRoute'])
+angular.module('checkout', ['ngRoute', 'data'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/checkout', {
@@ -9,7 +9,8 @@ angular.module('checkout', ['ngRoute'])
         });
     }])
 
-    .controller('CheckoutCtrl', ['$scope', 'CommonProp', function ($scope, CommonProp) {
+    .controller('CheckoutCtrl', ['$scope', 'CommonProp', 'commonDataService', function ($scope, CommonProp, commonDataService) {
         $scope.items = CommonProp.getItems();
         $scope.total = CommonProp.getTotal();
+        $scope.userName = commonDataService.getUserInfo().userName;
     }]);

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('cart', ['ngRoute'])
+angular.module('cart', ['ngRoute', 'data'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/cart', {
@@ -9,7 +9,7 @@ angular.module('cart', ['ngRoute'])
         });
     }])
 
-    .controller('CartCtrl', ['$scope', 'CommonProp', function ($scope, CommonProp) {
+    .controller('CartCtrl', ['$scope', 'CommonProp', 'commonDataService', function ($scope, CommonProp, commonDataService) {
         $scope.shopData = [
             {
                 'item': 'Hard Disk',
@@ -19,6 +19,9 @@ angular.module('cart', ['ngRoute'])
             }
 
         ];
+
+        console.log("User Info: ", commonDataService.getUserInfo());
+        $scope.userName = commonDataService.getUserInfo().userName;
 
         if (CommonProp.getItems() != '') {
             $scope.shopData = CommonProp.getItems();
