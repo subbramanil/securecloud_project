@@ -10,9 +10,11 @@ angular.module('login', ['ngRoute'])
     }])
 
     .controller('LoginCtrl', ['$scope', 'LoginProp', function ($scope, LoginProp) {
-
+        $scope.userName = "";
+        $scope.password = "";
         $scope.login = function () {
             console.log("Login() entry");
+            console.log($scope.userName, $scope.password);
             console.log("Login() exit");
         };
 
