@@ -3,6 +3,7 @@
 
 angular.module('shoppingCart', [
     'ngRoute',
+    'login',
     'cart',
     'checkout' 
 ]).

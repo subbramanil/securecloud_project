@@ -8,21 +8,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ResultModel {
 	public Set<String> listOfProducts;
-	 
-	public enum MType{
-		SUCCESS,ERROR
+
+	public enum MType {
+		SUCCESS, ERROR
 	}
-	public MType MessageType;  
+
+	public MType MessageType;
 
 	public String Message;
-	
-	ResultModel()
-	{
-		listOfProducts= new HashSet<String>();
-		Message= "Some kind of error occurred in your request";
-		MessageType= MType.ERROR;
-		
-		
+
+	ResultModel() {
+		listOfProducts = new HashSet<String>();
+		Message = "Some kind of error occurred in your request";
+		MessageType = MType.ERROR;
+
 	}
 
 	public Set<String> getListOfProducts() {
@@ -48,6 +47,5 @@ public class ResultModel {
 	public void setMessage(String message) {
 		Message = message;
 	}
-	
 
 }

@@ -21,61 +21,53 @@ import javax.ws.rs.core.MediaType;
 @Path("/authenticate")
 public class CtoFService {
 
+	// Takes input Username and password:
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String postOnlyXML(@QueryParam("userName") String name,
+			@QueryParam("password") String pass) {
+		ResultModel result = new ResultModel();
+		String role = "";
 
-//Takes input Username and password:
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public String postOnlyXML(@QueryParam("userName") String name, @QueryParam("password") String pass) {
-	  ResultModel result= new ResultModel();
-	  String role="";
-	  
-	  try{
-		      System.out.println("incomingXML :" + AuthenticateUser(name, pass));
-		      AuthenticateUser au= new AuthenticateUser(); 
-			      if(AuthenticateUser(name, pass)){
-			    	 role= au.GetUserRole(name);
-			      	}
-			      else
-			    	  {
-			    	  	throw new Exception("User not authenticated"); 
-			    	  } 
-			      //Call API and pass these parameters:
-			      
-//			     result.listOfProducts= MockApiCall(role, Category.GetListofCategory());
-			     result.listOfProducts = EcommerceAccessController.getPermittedCategories(role,Category.GetListofCategory());			     
-			     result.Message="SuccessFully completed task";
-			     result.MessageType= MType.SUCCESS;
-			     return "Success";
-	  }
-	  catch(Exception ex){
-		  ex.printStackTrace();
-		  result.Message=""+ex;
-		     result.MessageType= MType.ERROR; 
-	  }
-	  return null;
-  }
+		try {
+			System.out.println("incomingXML :" + AuthenticateUser(name, pass));
+			AuthenticateUser au = new AuthenticateUser();
+			if (AuthenticateUser(name, pass)) {
+				role = au.GetUserRole(name);
+			} else {
+				throw new Exception("User not authenticated");
+			}
+			// Call API and pass these parameters:
 
-public boolean AuthenticateUser(String userName,String password)
-	{
-		AuthenticateUser au= new AuthenticateUser(); 
-		 HashMap<String,String> list= au.GetUserList();
-		 if(list.containsKey(userName)){
-			 if(list.get(userName).equals(password)){
-				 return true;
-			 } 
-			 else return false;
-		 }
-		 else return false;
+			// result.listOfProducts= MockApiCall(role,
+			// Category.GetListofCategory());
+			result.listOfProducts = EcommerceAccessController
+					.getPermittedCategories(role, Category.GetListofCategory());
+			result.Message = "SuccessFully completed task";
+			result.MessageType = MType.SUCCESS;
+			return "Success";
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			result.Message = "" + ex;
+			result.MessageType = MType.ERROR;
+		}
+		return null;
 	}
 
+	public boolean AuthenticateUser(String userName, String password) {
+		AuthenticateUser au = new AuthenticateUser();
+		HashMap<String, String> list = au.GetUserList();
+		if (list.containsKey(userName)) {
+			if (list.get(userName).equals(password)) {
+				return true;
+			} else
+				return false;
+		} else
+			return false;
+	}
 
+	private Set<String> MockApiCall(String role, Set<String> getListofCategory) {
+		return getListofCategory;
 
-
-private Set<String> MockApiCall(String role, Set<String> getListofCategory) {
-	return getListofCategory;
-	
+	}
 }
-} 
-
-
-
