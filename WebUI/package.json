@@ -1,17 +1,18 @@
 {
-  "name": "AngularShoppingCart",
+  "name": "SecureShopping",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "dependencies": {
     "angular-route": "^1.3.14",
-    "express": "^4.12.2"
+    "express": "^4.12.2",
+    "q": "^1.4.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Jay",
-  "license": "MIT"
+  "author": "Subbu",
+  "license": ""
 }
