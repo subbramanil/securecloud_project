@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class ResultModel {
-	public Set<String> listOfProducts;
+	private Set<String> listOfProducts;
 
 	public enum MType {
 		SUCCESS, ERROR
 	}
 
-	public MType MessageType;
+	private MType MessageType;
 
-	public String Message;
+	private String Message;
 
 	ResultModel() {
 		listOfProducts = new HashSet<String>();
@@ -28,24 +28,31 @@ public class ResultModel {
 		return listOfProducts;
 	}
 
-	public void setListOfProducts(Set<String> listOfProducts) {
-		this.listOfProducts = listOfProducts;
+	public void setListOfProducts(Set<String> m_listOfProducts) {
+		this.listOfProducts = m_listOfProducts;
 	}
 
 	public MType getMessageType() {
 		return MessageType;
 	}
 
-	public void setMessageType(MType messageType) {
-		MessageType = messageType;
+	public void setMessageType(MType m_messageType) {
+		MessageType = m_messageType;
 	}
 
 	public String getMessage() {
 		return Message;
 	}
 
-	public void setMessage(String message) {
-		Message = message;
+	public void setMessage(String m_message) {
+		Message = m_message;
+	}
+	
+	@Override
+	public String toString() {		
+		return "listOfProducts:" + listOfProducts + "\n"
+				+ "Message:" + Message + "\n"
+				+ "MessageType:" + MessageType + "\n";
 	}
 
 }

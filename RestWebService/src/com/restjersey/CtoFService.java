@@ -23,8 +23,8 @@ public class CtoFService {
 
 	// Takes input Username and password:
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public String postOnlyXML(@QueryParam("userName") String name,
+	@Produces(MediaType.APPLICATION_XML)
+	public ResultModel postOnlyXML(@QueryParam("userName") String name,
 			@QueryParam("password") String pass) {
 		ResultModel result = new ResultModel();
 		String role = "";
@@ -41,17 +41,19 @@ public class CtoFService {
 
 			// result.listOfProducts= MockApiCall(role,
 			// Category.GetListofCategory());
-			result.listOfProducts = EcommerceAccessController
-					.getPermittedCategories(role, Category.GetListofCategory());
-			result.Message = "SuccessFully completed task";
-			result.MessageType = MType.SUCCESS;
-			return "Success";
+			result.setListOfProducts(EcommerceAccessController
+					.getPermittedCategories(role, Category.GetListofCategory()));
+			System.out.println(result.getMessage());
+			result.setMessage("SuccessFully completed task");
+			result.setMessageType(MType.SUCCESS);
+			System.out.println(result);
+			return result;
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			result.Message = "" + ex;
-			result.MessageType = MType.ERROR;
+			result.setMessage("" + ex);
+			result.setMessageType(MType.ERROR);
 		}
-		return null;
+		return result;
 	}
 
 	public boolean AuthenticateUser(String userName, String password) {
