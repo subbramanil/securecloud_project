@@ -37,10 +37,11 @@ angular.module('login', ['ngRoute'])
                     $http(
                         {
                             method: "get",
-                            url: "http://localhost:8080/demoREST/rest/authenticate" + params
+                            url: "http://localhost:8080/demoREST/rest/authenticate" + params,
+                            headers: { 'Accept': 'application/json' }
                         }
                     ).then(function (response) {
-                            console.log("Response: ", response.data);
+                            console.log("Response: ", response);
                             defer.resolve(response);
                         },
                         function (error) {

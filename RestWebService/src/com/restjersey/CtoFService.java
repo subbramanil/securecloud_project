@@ -4,6 +4,7 @@ package com.restjersey;
 import javax.ws.rs.QueryParam;
 
 import com.ecommerce.EcommerceAccessController;
+import com.google.gson.Gson;
 import com.restjersey.AuthenticateUser;
 import com.restjersey.ResultModel.MType;
 
@@ -23,11 +24,12 @@ public class CtoFService {
 
 	// Takes input Username and password:
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
-	public ResultModel postOnlyXML(@QueryParam("userName") String name,
+	@Produces(MediaType.APPLICATION_JSON)
+	public String postOnlyXML(@QueryParam("userName") String name,
 			@QueryParam("password") String pass) {
 		ResultModel result = new ResultModel();
 		String role = "";
+		Gson gson = new Gson();
 
 		try {
 			System.out.println("incomingXML :" + AuthenticateUser(name, pass));
@@ -47,13 +49,12 @@ public class CtoFService {
 			result.setMessage("SuccessFully completed task");
 			result.setMessageType(MType.SUCCESS);
 			System.out.println(result);
-			return result;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			result.setMessage("" + ex);
 			result.setMessageType(MType.ERROR);
 		}
-		return result;
+		return gson.toJson(result, ResultModel.class);
 	}
 
 	public boolean AuthenticateUser(String userName, String password) {

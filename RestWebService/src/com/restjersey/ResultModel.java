@@ -19,7 +19,7 @@ public class ResultModel {
 
 	ResultModel() {
 		listOfProducts = new HashSet<String>();
-		Message = "Some kind of error occurred in your request";
+		Message = "No Error";
 		MessageType = MType.ERROR;
 
 	}
