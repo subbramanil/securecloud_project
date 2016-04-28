@@ -1,12 +1,39 @@
-<div class="container">
-
+<div class="container-fluid">
     <div class="row">
         <div class="col-xs-7 col-md-8 col-sm-8 col-lg-8">
             <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Login</h3>
-                </div>
+                <div class="panel-body">
+                    <div class="jumbotron">
+                        <h1>Login</h1>
+                        <blockquote>
+                            <p>“The most important thing in communication is hearing what isn't said”</p>
+                            <footer><cite title="Source Title">Peter Trucker</cite></footer>
+                        </blockquote>
+                        <form>
+                            <label class="control-label">User Name </label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <input type="text" class="form-control" ng-model="userName" placeholder="Username"
+                                       aria-describedby="basic-addon1">
+                            </div>
 
+                            <label class="control-label">Password </label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">
+                                    <span class="glyphicon glyphicon-asterisk"></span>
+                                </span>
+                                <input class="form-control" type="password" ng-model="password" placeholder="password"
+                                       aria-describedby="basic-addon2">
+                            </div>
+                        </form>
+                        <div class="pull-right" style="margin: 10px">
+                            <a class="btn btn-success" href="#cart" ng-click="login()">Sign In</a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 

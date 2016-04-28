@@ -9,6 +9,6 @@ angular.module('shoppingCart', [
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({
-        redirectTo: '/cart'
+        redirectTo: '/login'
     });
 }]);

@@ -9,10 +9,10 @@ app.use('/script', express.static(__dirname + '/public/script'));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
-app.get('/',function(req,res){
-	res.sendFile('main.html',{'root':__dirname + '/public'});
+app.get('/', function (req, res) {
+    res.sendFile('main.html', {'root': __dirname + '/public'});
 });
 
-app.listen('3000',function(){
-	console.log('Server running at http://localhost:3000 !!')
+app.listen('3000', function () {
+    console.log('Server running at http://localhost:3000 !!')
 });
