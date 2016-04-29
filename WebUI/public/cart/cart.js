@@ -10,18 +10,31 @@ angular.module('cart', ['ngRoute', 'data'])
     }])
 
     .controller('CartCtrl', ['$scope', 'CommonProp', 'commonDataService', function ($scope, CommonProp, commonDataService) {
-        $scope.shopData = [
-            {
-                'item': 'Hard Disk',
-                'id': 'HD',
-                'selected': 0,
-                'prices': [{'size': '200GB', 'price': '2000'}, {'size': '400GB', 'price': '4000'}]
-            }
-
-        ];
+        var allSections = commonDataService.getAvailableSections();
+        console.log(allSections);
 
         console.log("User Info: ", commonDataService.getUserInfo());
         $scope.userName = commonDataService.getUserInfo().userName;
+
+        var allowedSections = [];
+        if($scope.userName == 'Karthik'){
+            allowedSections = ["Medicines","Real Estate","Stationary","Furniture","Books"];
+        } else if($scope.userName == 'Subbu'){
+            allowedSections = ["Medicines","Real Estate","Stationary","Furniture","Books"];
+        } else{
+            allowedSections = ["Medicines","Stationary","Books"];
+        }
+
+        $scope.shopData = [];
+
+        for(var i in allSections){
+            for(var j in allowedSections){
+                console.log(allSections[i].item, allowedSections[j]);
+                if(allSections[i].item == allowedSections[j]){
+                    $scope.shopData.push(allSections[i]);
+                }
+            }
+        }
 
         if (CommonProp.getItems() != '') {
             $scope.shopData = CommonProp.getItems();
@@ -56,7 +69,7 @@ angular.module('cart', ['ngRoute', 'data'])
             template: function (elem, attrs) {
                 return '<div class="panel-body">\
                     <div class="radio" ng-repeat="i in option">\
-                        <label><input type="radio" ng-model="$parent.selected" ng-value="{{i.price}}"  name="{{name}}">{{i.size}} Rs.{{i.price}}</label>\
+                        <label><input type="radio" ng-model="$parent.selected" ng-value="{{i.price}}"                          name="{{name}}">{{i.size}} ${{i.price}}</label>\
                     </div>\
                 </div>'
             }

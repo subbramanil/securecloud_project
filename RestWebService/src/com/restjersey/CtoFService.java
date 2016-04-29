@@ -24,7 +24,7 @@ public class CtoFService {
 
 	// Takes input Username and password:
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public String postOnlyXML(@QueryParam("userName") String name,
 			@QueryParam("password") String pass) {
 		ResultModel result = new ResultModel();

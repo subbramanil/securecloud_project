@@ -21,7 +21,6 @@ public class ResultModel {
 		listOfProducts = new HashSet<String>();
 		Message = "No Error";
 		MessageType = MType.ERROR;
-
 	}
 
 	public Set<String> getListOfProducts() {

@@ -33,27 +33,35 @@ angular.module('login', ['ngRoute', 'data'])
                 login: function (username, passwd) {
                     console.log("LoginService.login() entry");
                     var params = "?userName=" + username + "&password=" + passwd;
-                    var defer = $q.defer();
+                    // var defer = $q.defer();
                     var userInfo = {
                         userName: username
                     };
                     commonDataService.setUserInfo(userInfo);
-                    $http(
-                        {
-                            method: "get",
-                            url: "http://localhost:8080/demoREST/rest/authenticate" + params,
-                            headers: {'Accept': 'application/json'}
-                        }
-                    ).then(function (response) {
-                            console.log("Response: ", response);
-                            defer.resolve(response);
-                        },
-                        function (error) {
-                            console.log("Error: ", error);
-                            defer.resolve(error);
+
+                    $http.get("http://localhost:8080/demoREST/rest/authenticate" + params)
+                        .success(function (data) {
+                            console.log("Response: ", data);
+                        })
+                        .error(function () {
+                            console.log("failed");
                         });
+
+                    /*                    $http(
+                     {
+                     method: "get",
+                     url: "http://localhost:8080/demoREST/rest/authenticate" + params,
+                     }
+                     ).then(function (response) {
+                     console.log("Response: ", response);
+                     defer.resolve(response);
+                     },
+                     function (error) {
+                     console.log("Error: ", error);
+                     defer.resolve(error);
+                     });*/
                     console.log("LoginService.login() exit");
-                    return defer.promise;
+                    // return defer.promise;
                 },
                 getItems: function () {
                     return Items;
