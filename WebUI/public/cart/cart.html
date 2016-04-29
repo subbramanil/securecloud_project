@@ -47,3 +47,38 @@
 </div><!-- /.container -->
 
 <get-scroll scroll="scroll"></get-scroll>
+
+<!-- Modal -->
+<div class="modal fade" id="responseModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Response</h4>
+            </div>
+            <div class="modal-body">
+                <pre>
+======================== XACML Response ===================
+&lt;Response xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17">
+    &lt;Result>
+        &lt;Decision>Permit&lt;/Decision>
+        &lt;Status>
+            &lt;StatusCode Value="urn:oasis:names:tc:xacml:1.0:status:ok"/>
+        &lt;/Status>
+        &lt;Attributes Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+            &lt;Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" IncludeInResult="true">
+                &lt;AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Furniture&lt;/AttributeValue>
+            &lt;/Attribute>
+        &lt;/Attributes>
+    &lt;/Result>
+    .....
+&lt;/Response>
+===========================================================
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

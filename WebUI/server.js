@@ -7,6 +7,7 @@ var app = express();
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/script', express.static(__dirname + '/public/script'));
 app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/img', express.static(__dirname + '/public/img'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 app.get('/', function (req, res) {

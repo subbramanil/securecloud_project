@@ -1,38 +1,35 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-xs-7 col-md-8 col-sm-8 col-lg-8">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <div class="jumbotron">
-                        <h1>Login</h1>
-                        <blockquote>
-                            <p>“The most important thing in communication is hearing what isn't said”</p>
-                            <footer><cite title="Source Title">Peter Trucker</cite></footer>
-                        </blockquote>
-                        <form>
-                            <label class="control-label">User Name </label>
-                            <div class="input-group">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="jumbotron">
+                    <h1>Login</h1>
+                    <blockquote>
+                        <p>“The most important thing in communication is hearing what isn't said”</p>
+                        <footer><cite title="Source Title">Peter Trucker</cite></footer>
+                    </blockquote>
+                    <form>
+                        <label class="control-label">User Name </label>
+                        <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </span>
-                                <input type="text" class="form-control" ng-model="userName" placeholder="Username"
-                                       aria-describedby="basic-addon1">
-                            </div>
+                            <input type="text" class="form-control" ng-model="userName" placeholder="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
 
-                            <label class="control-label">Password </label>
-                            <div class="input-group">
+                        <label class="control-label">Password </label>
+                        <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2">
                                     <span class="glyphicon glyphicon-asterisk"></span>
                                 </span>
-                                <input class="form-control" type="password" ng-model="password" placeholder="password"
-                                       aria-describedby="basic-addon2">
-                            </div>
-                        </form>
-                        <div class="pull-right" style="margin: 10px">
-                            <a class="btn btn-success" href="#cart" ng-click="login()">Sign In</a>
+                            <input class="form-control" type="password" ng-model="password" placeholder="password"
+                                   aria-describedby="basic-addon2">
                         </div>
-                    </div>
-
+                    </form>
+                </div>
+                <div class="pull-right" style="margin: 10px">
+                    <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Sign In</a>
                 </div>
             </div>
         </div>
@@ -40,3 +37,42 @@
     </div><!-- /.row  -->
 
 </div><!-- /.container -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Request</h4>
+            </div>
+            <div class="modal-body">
+                <pre>
+======================== XACML Request ====================
+&lt;Request xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" CombinedDecision="false" ReturnPolicyIdList="false">
+    &lt;Attributes Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action">
+        &lt;Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" IncludeInResult="false">
+            &lt;AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">view&lt;/AttributeValue>
+        &lt;/Attribute>
+    &lt;/Attributes>
+    &lt;Attributes Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+        &lt;Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id" IncludeInResult="false">
+            &lt;AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">premium&lt;/AttributeValue>
+        &lt;/Attribute>
+    &lt;/Attributes>
+    &lt;Attributes Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+        &lt;Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" IncludeInResult="true">
+        &lt;AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Medicines&lt;/AttributeValue>
+    &lt;/Attribute>
+&lt;/Attributes>
+.....
+&lt;/Request>
+===========================================================
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" href="#cart" ng-click="login()">Complete Sign In</a>
+            </div>
+        </div>
+    </div>
+</div>

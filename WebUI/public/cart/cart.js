@@ -10,6 +10,8 @@ angular.module('cart', ['ngRoute', 'data'])
     }])
 
     .controller('CartCtrl', ['$scope', 'CommonProp', 'commonDataService', function ($scope, CommonProp, commonDataService) {
+
+        $('#responseModel').modal('show');
         var allSections = commonDataService.getAvailableSections();
         console.log(allSections);
 
