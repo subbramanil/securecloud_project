@@ -56,7 +56,11 @@ angular.module('cart', ['ngRoute', 'data'])
 
         $scope.$watch('shopData', function () {
             CommonProp.setItems($scope.shopData);
-        })
+        });
+
+        $scope.clear = function () {
+            $scope.shopData = [];
+        };
 
 
     }])

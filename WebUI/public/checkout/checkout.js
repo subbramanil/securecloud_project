@@ -13,4 +13,8 @@ angular.module('checkout', ['ngRoute', 'data'])
         $scope.items = CommonProp.getItems();
         $scope.total = CommonProp.getTotal();
         $scope.userName = commonDataService.getUserInfo().userName;
+
+        $scope.clear = function () {
+            $scope.shopData = [];
+        };
     }]);
